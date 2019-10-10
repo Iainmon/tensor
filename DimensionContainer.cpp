@@ -5,7 +5,7 @@
 
 using namespace std;
 
-template<class T>
+template<typename T>
 DimensionContainer<T>::DimensionContainer(multidimensional_vertex_definitions_t& _multidimensional_shape_vertex_locations, dimension_size_t _dimension_count = 1) {
     dimension_depth = _dimension_count;
     const dimension_size_t dimension_max_bounds = _multidimensional_shape_vertex_locations[dimension_depth - 1];
@@ -30,7 +30,7 @@ DimensionContainer<T>::DimensionContainer(multidimensional_vertex_definitions_t&
 
 }
 
-template<class T>
+template<typename T>
 DimensionContainer<T> &DimensionContainer<T>::operator[](const dimension_size_t _index_of_dimension) {
 
     if (nested_dimensions == nullptr) {
@@ -46,7 +46,7 @@ DimensionContainer<T> &DimensionContainer<T>::operator[](const dimension_size_t 
     return nested_dimensions[_index_of_dimension];
 }
 
-template<class T>
+template<typename T>
 T& DimensionContainer<T>::index(const dimension_size_t _index_of_value) {
 
     if (nested_dimensions != nullptr) {
@@ -62,7 +62,7 @@ T& DimensionContainer<T>::index(const dimension_size_t _index_of_value) {
     return values[_index_of_value];
 }
 
-template<class T>
+template<typename T>
 void DimensionContainer<T>::iterate(multidimensional_iterator_lambda_ptr_t<T> _iterator_lambda) {
     if (dimension_depth > 1) {
         return;
@@ -76,7 +76,7 @@ void DimensionContainer<T>::iterate(multidimensional_iterator_lambda_ptr_t<T> _i
     _iterate(_iterator_lambda, iterator_range);
 }
 
-template<class T>
+template<typename T>
 void DimensionContainer<T>::_iterate(multidimensional_iterator_lambda_ptr_t<T> _iterator_lambda, multidimensional_vertex_definitions_t& _iterator_range) {
     // {0,1,9} // max value for dimension3 = 9
     // {0,2,0} // access this address, and pass it into iterator.

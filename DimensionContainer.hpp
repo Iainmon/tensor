@@ -8,10 +8,10 @@ using namespace std;
 typedef unsigned int dimension_size_t;
 typedef vector<dimension_size_t> multidimensional_vertex_definitions_t;
 
-template<class T>
+template<typename T>
 using multidimensional_iterator_lambda_ptr_t = void (*)(&T, &multidimensional_vertex_definitions_t); // (currentvalue, currentmultidimensionalindex)
 
-template<class T>
+template<typename T>
 class DimensionContainer {
     private:
 
