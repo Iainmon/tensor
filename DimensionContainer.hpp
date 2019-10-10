@@ -34,4 +34,6 @@ class DimensionContainer {
 
     void iterate(multidimensional_iterator_lambda_ptr_t<T> _iterator_lambda);
 
+    T& retrieve(multidimensional_vertex_definitions_t& _multidimensional_location_of_value);
+
 };

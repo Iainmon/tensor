@@ -78,7 +78,14 @@ void DimensionContainer<T>::iterate(multidimensional_iterator_lambda_ptr_t<T> _i
 
 template<class T>
 void DimensionContainer<T>::_iterate(multidimensional_iterator_lambda_ptr_t<T> _iterator_lambda, multidimensional_vertex_definitions_t& _iterator_range) {
-    // {0,1,9} // max value for dimension3 = 9
-    // {0,2,0} // access this address, and pass it into iterator.
     _iterator_lambda(, _iterator_range);
+}
+
+template<class T>
+T& DimensionContainer<T>::retrieve(multidimensional_vertex_definitions_t& _multidimensional_location_of_value) {
+    if (values != nullptr) {
+        return index(_multidimensional_location_of_value.back());
+    }
+
+    return nested_dimensions[_multidimensional_location_of_value[dimension_depth - 1]].retrieve(_multidimensional_location_of_value);
 }
